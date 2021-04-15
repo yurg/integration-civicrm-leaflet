@@ -17,8 +17,11 @@
  */
 
 defined('ABSPATH') or die("Cannot access pages directly.");
+ 
+ include_once(ABSPATH . 'wp-admin/includes/plugin.php');
 
-require_once LEAFLET_MAP__PLUGIN_DIR . 'shortcodes/class.shortcode.php';
+if (is_plugin_active('leaflet-map')) {
+    require_once LEAFLET_MAP__PLUGIN_DIR . 'shortcodes/class.shortcode.php';
 
 /**
  * GeoJSON Shortcode Class
@@ -245,4 +248,5 @@ class Leaflet_CiviCRM_Api_Shortcode extends Leaflet_Shortcode {
     <?php
     return ob_get_clean();
   }
+ }
 }
